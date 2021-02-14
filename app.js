@@ -18,6 +18,7 @@ const showImages = (images) => {
   // console.log(images);
   if (images.length == 0) {
     document.getElementById("notice").innerText = "Sorry, No Results Found!";
+    toggleSpinner(false);
   } else {
     imagesArea.style.display = 'block';
     gallery.innerHTML = '';
