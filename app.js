@@ -36,6 +36,7 @@ const showImages = (images) => {
 }
 
 const getImages = (query) => {
+  toggleSpinner();
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -51,6 +52,7 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   } else {
+    sliders.pop(img);
     // console.log('Hey, Already added !')
   }
 }
@@ -136,4 +138,11 @@ document.getElementById("search").addEventListener("keypress", function (event) 
 
 sliderBtn.addEventListener('click', function () {
   createSlider()
-})
+});
+
+const toggleSpinner = () => {
+  const spinner = document.getElementById("loading-spinner");
+  spinner.classList.remove("d-none");
+}
+
+
